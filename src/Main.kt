@@ -14,9 +14,8 @@ class MyApp : Application() {
     @Suppress("ktlint:standard:max-line-length")
     override fun start(stage: Stage) {
         var showResult = false
-        var firstVal: Double = 0.0
-        var secondVal: Double = 0.0
-        var lastResult: Double = 0.0
+        var firstVal: Double
+        var lastResult = 0.0
 
         val grid = GridPane()
         grid.hgap = 10.0
@@ -139,7 +138,6 @@ class MyApp : Application() {
         buttonClear.setOnAction {
             textField.clear()
             firstVal = 0.0
-            secondVal = 0.0
         }
 
         val buttonDot = Button(".")
@@ -223,14 +221,6 @@ class MyApp : Application() {
             grid.rowConstraints.add(row)
         }
 
-        val scene = Scene(grid)
-        stage.sizeToScene()
-        stage.isResizable = true
-
-        stage.title = "Calculadora"
-        stage.scene = scene
-        stage.show()
-
         buttonEquals.setOnAction {
             val input = textField.text
             if (textField.text.isEmpty()) {
@@ -268,6 +258,14 @@ class MyApp : Application() {
             }
             showResult = true
         }
+
+        val scene = Scene(grid)
+        stage.sizeToScene()
+        stage.isResizable = true
+
+        stage.title = "Calculadora"
+        stage.scene = scene
+        stage.show()
     }
 }
 
